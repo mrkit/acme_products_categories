@@ -34,6 +34,20 @@ function getCategoryNames () {
   return Object.keys(data);
 }
 
+function getProductsByCategory (category) {
+  var categoryNames = getCategoryNames();
+
+  var matchedArray = categoryNames.filter(function(el){
+      if(data[el] === data[category]){
+          return true;
+      }
+ 
+  });  
+     return data[matchedArray[0]];
+}
 
 
-module.exports = { getCategoryNames: getCategoryNames }
+module.exports = { 
+  getCategoryNames: getCategoryNames,
+  getProductsByCategory: getProductsByCategory
+}

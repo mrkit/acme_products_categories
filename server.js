@@ -4,11 +4,15 @@ var port = process.env.PORT || 3000;
 var nunjucks = require('nunjucks');
 var routes = require('./routes');
 
+app.use(require('body-parser').urlencoded( { extended: false} ));
+
+
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 nunjucks.configure('views', { noCache:true });
 
 app.use(routes)
+
 
 app.listen(port, function(){
   console.log(`listening on ${port}`);

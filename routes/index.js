@@ -7,11 +7,23 @@ router.get('/', function(req, res, next){
   });
 });
 
-router.get('/category/:category', function(){
-  res.render('category', {
-    category: req.params.name
-  })
-});
+// router.get('/:category', function(){
+//   res.render('category', {
+//     category: req.params.name
+//   })
+// });
 
+
+// router.get('/:category', function(req, res, next){
+//   res.send(req.params);
+// });
+
+router.get('/:category', function(req, res, next){
+  var category = req.params.category;
+  res.render('category', { category: category, 
+                            products: db.getProductsByCategory(category) });
+
+});
+// getProductsByCategory
 
 module.exports = router;
