@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>ACME Products Project</h1>
+  <div class="nav">
+    {% for category in title %}
+    <li><a href="/category/:category">{{category}}</a></li>
+    {% endfor %}
+  </div>
+  
+ 
+  {% block content %}
+  
+  {% endblock %}
+  
+</body>
+</html>
