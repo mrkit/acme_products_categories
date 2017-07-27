@@ -18,6 +18,16 @@ var data = {
       "name": "bar 2",
       "id": 2
     }
+  ],
+  "Joe's Category": [
+    {
+      "name": "stuff 1",
+      "id": 1
+    },
+    {
+      "name": "stuff 2",
+      "id": 2
+    }
   ]
 }
 
@@ -35,19 +45,30 @@ function getCategoryNames () {
 }
 
 function getProductsByCategory (category) {
-  var categoryNames = getCategoryNames();
+  // var categoryNames = getCategoryNames();
 
-  var matchedArray = categoryNames.filter(function(el){
-      if(data[el] === data[category]){
-          return true;
-      }
+  // var matchedArray = categoryNames.filter(function(el){
+  //     if(data[el] === data[category]){
+  //         return true;
+  //     }
  
-  });  
-     return data[matchedArray[0]];
+  // });  
+     return data[category];
 }
 
+function createCategory(name){
+  data[name] = [];
+  console.log("category created!")
+}
+
+function createProductInCategory(category, product){
+  var newProductId = data[category].length;
+  data[category][newProductId] = { id: newProductId, "name": product};
+  console.log("product created!");
+}
 
 module.exports = { 
   getCategoryNames: getCategoryNames,
-  getProductsByCategory: getProductsByCategory
+  getProductsByCategory: getProductsByCategory,
+  createProductInCategory
 }

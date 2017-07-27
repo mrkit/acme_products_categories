@@ -1,13 +1,24 @@
 {% extends 'layout.html' %}
 
-
 {% block content %}
+<h2><a href='/'>Home</a>
+<h2>{{ category }}</h1>
 
-<h1>{{category}}</h1>
+<form method='POST' action='/{{ category }}/new_product/{{ name }}'>
+    <div>
+        <label>Add a new product:</label>
+        <input name='name' />
+    </div>
+<button type='submit'>Save</button>
 
-{% for product in products %}
-<li>{{ product }}</li>
-{% endfor %}
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }}</li>
+    {% endfor %}
+</ul>
 
-
+<h4>Products within {{ category }}</h4>
+    <div class='well'>
+        {{ products | dump }}
+    </div>
 {% endblock %}
